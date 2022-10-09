@@ -1,0 +1,22 @@
+name: Action Example
+
+on:
+  push:
+    branches: [ "master" ]
+
+permissions:
+  contents: write
+  
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Inline!
+      uses: cric96/inline-mermaid@v1.8.0
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: build # The folder the action should deploy.
